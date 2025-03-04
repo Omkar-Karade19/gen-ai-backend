@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class GeminiController {
 
     private static final Logger log = LoggerFactory.getLogger(GeminiController.class);
+
     @Autowired
     private GeminiService geminiService;
 
@@ -31,7 +32,6 @@ public class GeminiController {
         log.info("API Response : {}", response);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
 
     @GetMapping("/movie-recommend")
     public ResponseEntity<Object> recommendMovie(@RequestParam String genre, @RequestParam String language){
