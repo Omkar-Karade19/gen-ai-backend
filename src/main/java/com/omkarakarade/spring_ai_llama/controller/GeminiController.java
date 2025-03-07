@@ -29,7 +29,7 @@ public class GeminiController {
     public ResponseEntity<Object> checkEligibility(@RequestParam double income, @RequestParam double creditScore){
         String prompt = "Given an income of " + income + " and a credit score of " + creditScore + ", is the user eligible for a loan? Provide a brief response.";
         String response = geminiService.getAnswer(prompt);
-        log.info("API Response : {}", response);
+        log.info("Loan Eligibility API Response : {}", response);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

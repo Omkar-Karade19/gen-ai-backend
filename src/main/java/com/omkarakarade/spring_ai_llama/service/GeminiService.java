@@ -9,7 +9,6 @@ import java.util.Map;
 @Service
 public class GeminiService {
 
-
     // Inject the API URL
     @Value("${gemini.api.url}")
     private String geminiApiUrl;
@@ -21,7 +20,9 @@ public class GeminiService {
     @Autowired
     private WebClient webClient;
 
+    // Prepare the Prompt Request accepted by the Gemini API
     public String getAnswer(String promptQuestion){
+
         // Construct the Request Payload
         Map<String,Object> requestBody = Map.of(
                 "contents",new Object[] {
@@ -30,7 +31,6 @@ public class GeminiService {
                         })
                 }
         );
-
 
         // Make API Call
         String geminiResponse = webClient.post()
@@ -42,7 +42,6 @@ public class GeminiService {
                 .block();
 
         // Return the Response
-
         return geminiResponse;
     }
 }
